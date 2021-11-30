@@ -79,7 +79,7 @@ class EnOceanBinarySensor(EnOceanEntity, BinarySensorEntity):
             self.schedule_update_ha_state()
             return
         if self._device_class == "opening":
-            state = 1 - ((packet.data[1] >> 7) & 1)
+            state = 1 - (packet.data[1] & 1)
             self._attr_is_on = state
             self.schedule_update_ha_state()
             return
