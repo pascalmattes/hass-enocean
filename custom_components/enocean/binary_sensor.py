@@ -6,6 +6,7 @@ from homeassistant.components.binary_sensor import (
     PLATFORM_SCHEMA,
     BinarySensorEntity,
     DEVICE_CLASS_OPENING,
+    DEVICE_CLASS_WINDOW,
     DEVICE_CLASS_MOISTURE,
 )
 from homeassistant.const import CONF_DEVICE_CLASS, CONF_ID, CONF_NAME
@@ -78,7 +79,7 @@ class EnOceanBinarySensor(EnOceanEntity, BinarySensorEntity):
             self._attr_is_on = flood
             self.schedule_update_ha_state()
             return
-        if self._device_class == "opening":
+        if self._device_class == "window":
             state = 1 - (packet.data[1] & 1)
             self._attr_is_on = state
             self.schedule_update_ha_state()
