@@ -5,18 +5,15 @@ import voluptuous as vol
 
 from homeassistant.components.sensor import (
     PLATFORM_SCHEMA,
-    STATE_CLASS_MEASUREMENT,
+    SensorDeviceClass,
     SensorEntity,
     SensorEntityDescription,
+    SensorStateClass,
 )
 from homeassistant.const import (
     CONF_DEVICE_CLASS,
     CONF_ID,
     CONF_NAME,
-    DEVICE_CLASS_HUMIDITY,
-    DEVICE_CLASS_POWER,
-    DEVICE_CLASS_TEMPERATURE,
-    DEVICE_CLASS_CO2,
     PERCENTAGE,
     POWER_WATT,
     STATE_CLOSED,
@@ -48,8 +45,8 @@ SENSOR_DESC_TEMPERATURE = SensorEntityDescription(
     name="Temperature",
     native_unit_of_measurement=TEMP_CELSIUS,
     icon="mdi:thermometer",
-    device_class=DEVICE_CLASS_TEMPERATURE,
-    state_class=STATE_CLASS_MEASUREMENT,
+    device_class=SensorDeviceClass.TEMPERATURE,
+    state_class=SensorStateClass.MEASUREMENT,
 )
 
 SENSOR_DESC_HUMIDITY = SensorEntityDescription(
@@ -57,8 +54,8 @@ SENSOR_DESC_HUMIDITY = SensorEntityDescription(
     name="Humidity",
     native_unit_of_measurement=PERCENTAGE,
     icon="mdi:water-percent",
-    device_class=DEVICE_CLASS_HUMIDITY,
-    state_class=STATE_CLASS_MEASUREMENT,
+    device_class=SensorDeviceClass.HUMIDITY,
+    state_class=SensorStateClass.MEASUREMENT,
 )
 
 SENSOR_DESC_POWER = SensorEntityDescription(
@@ -66,8 +63,8 @@ SENSOR_DESC_POWER = SensorEntityDescription(
     name="Power",
     native_unit_of_measurement=POWER_WATT,
     icon="mdi:power-plug",
-    device_class=DEVICE_CLASS_POWER,
-    state_class=STATE_CLASS_MEASUREMENT,
+    device_class=SensorDeviceClass.POWER,
+    state_class=SensorStateClass.MEASUREMENT,
 )
 
 SENSOR_DESC_WINDOWHANDLE = SensorEntityDescription(
@@ -81,8 +78,8 @@ SENSOR_DESC_CO2 = SensorEntityDescription(
     name="CO2",
     native_unit_of_measurement=CONCENTRATION_PARTS_PER_MILLION,
     icon="mdi:molecule-co2",
-    device_class=DEVICE_CLASS_CO2,
-    state_class=STATE_CLASS_MEASUREMENT,
+    device_class=SensorDeviceClass.CO2,
+    state_class=SensorStateClass.MEASUREMENT,
 )
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
